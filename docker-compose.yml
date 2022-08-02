@@ -1,0 +1,73 @@
+version: "3.7"
+
+services:
+    # image project
+    app:
+        container_name: backend_evoterra
+        build:
+            context: .
+            dockerfile: Dockerfile
+        image: laravel9
+        restart: unless-stopped
+        working_dir: /var/www/
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+        networks:
+            - backend_evoterra
+
+    # nginx
+    nginx:
+        container_name: nginx_evoterra
+        image: nginx:alpine
+        restart: unless-stopped
+        ports:
+            - "8901:80"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/:/etc/nginx/conf.d/
+        networks:
+            - backend_evoterra
+
+    # db mysql
+    mysql:
+        container_name: mysql_evoterra
+        image: mysql:5.7.22
+        restart: unless-stopped
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_USER: ${DB_USERNAME}
+        volumes:
+            - ./.docker/mysql/dbdata:/var/lib/mysql
+        ports:
+            - "33061:3306"
+        networks:
+            - backend_evoterra
+
+    # queue
+    queue:
+        container_name: queue_evoterra
+        image: laravel9
+        restart: unless-stopped
+        command: "php artisan queue:work"
+        volumes:
+            - ./:/var/www
+        depends_on:
+            - redis
+            - app
+        networks:
+            - backend_evoterra
+
+    # redis
+    redis:
+        container_name: redis_evoterra
+        image: redis:latest
+        networks:
+            - backend_evoterra
+
+networks:
+    backend_evoterra:
+        driver: bridge
