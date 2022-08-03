@@ -16,12 +16,11 @@ class CreateItemsgalleriesTable extends Migration {
             $table->uuid('uuid')->unique();
             
 			$table->integer('gallery_id')->unsigned();
-			$table->foreign('gallery_id')->references('id')->on('galleries')->onDelete('restrict');
+			$table->foreign('gallery_id')->references('id')->on('galeries')->onDelete('restrict');
 
-			$table->string('name', 70)->nullable();
-			$table->string('legend', 120)->nullable();
-			$table->string('credit', 40)->nullable();
-			$table->string('address', 120);
+			$table->string('src', 255);
+			$table->string('legend', 100)->nullable();
+			$table->string('credit', 60)->nullable();
              
             $table->timestamps();
 			$table->softDeletes();

@@ -19,7 +19,8 @@ class CreateEditorialsTable extends Migration {
 			$table->string('slug', 60);
 			$table->integer('order')->default(100)->nullable();
              
-            
+            $table->timestamps();
+			$table->softDeletes();
              
         });
     }

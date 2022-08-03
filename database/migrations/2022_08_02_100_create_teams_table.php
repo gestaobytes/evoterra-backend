@@ -14,17 +14,20 @@ class CreateTeamsTable extends Migration {
         Schema::create('teams', function (Blueprint $table) {
             $table->increments('id');
             $table->uuid('uuid')->unique();
-
-			$table->string('name', 100);
-			$table->longText('bio')->nullable();
-			$table->string('linkedin', 100)->nullable();
-			$table->string('facebook', 100)->nullable();
-			$table->string('twitter', 100)->nullable();
-			$table->string('instagram', 100)->nullable();
-
+            
+			$table->string('name', 120);
+			$table->string('image', 120)->nullable();
+			$table->string('minibio', 500)->nullable();
+			$table->string('instagram', 150)->nullable();
+			$table->string('linkedin', 150)->nullable();
+			$table->string('facebook', 150)->nullable();
+			$table->string('twitter', 150)->nullable();
+			$table->string('email', 150)->nullable();
+			$table->char('cellphone', 15)->nullable();
+             
             $table->timestamps();
 			$table->softDeletes();
-
+             
         });
     }
 }
