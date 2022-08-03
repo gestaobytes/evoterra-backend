@@ -35,10 +35,9 @@ class ItemsgalleryTest extends TestCase
         $data = [
             
 			'gallery_id' => 1,
-			'name' => $this->faker->name,
+			'src' => $this->faker->imageUrl(300, 300),
 			'legend' => $this->faker->sentence,
-			'credit' => $this->faker->word,
-			'address' => $this->faker->sentence,
+			'credit' => $this->faker->sentence,
              
         ];
         $this->actingAs($user)->withSession(['banned' => false])->post('/api/v1/itemsgalleries', $data)->assertCreated();
@@ -51,10 +50,9 @@ class ItemsgalleryTest extends TestCase
         $data = [
             
 			'gallery_id' => 1,
-			'name' => $this->faker->name,
+			'src' => $this->faker->imageUrl(300, 300),
 			'legend' => $this->faker->sentence,
-			'credit' => $this->faker->word,
-			'address' => $this->faker->sentence,
+			'credit' => $this->faker->sentence,
              
         ];
         $this->actingAs($user)->withSession(['banned' => false])->put("/api/v1/itemsgalleries/$model->id", $data)->assertOk();

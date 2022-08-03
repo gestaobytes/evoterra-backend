@@ -35,11 +35,14 @@ class TeamTest extends TestCase
         $data = [
             
 			'name' => $this->faker->name,
-			'bio' => '',
+			'image' => $this->faker->imageUrl(300, 300),
+			'minibio' => $this->faker->sentence,
+			'instagram' => $this->faker->sentence,
 			'linkedin' => $this->faker->sentence,
 			'facebook' => $this->faker->sentence,
 			'twitter' => $this->faker->sentence,
-			'instagram' => $this->faker->sentence,
+			'email' => $this->faker->email,
+			'cellphone' => $this->faker->cellphone,
              
         ];
         $this->actingAs($user)->withSession(['banned' => false])->post('/api/v1/teams', $data)->assertCreated();
@@ -52,11 +55,14 @@ class TeamTest extends TestCase
         $data = [
             
 			'name' => $this->faker->name,
-			'bio' => '',
+			'image' => $this->faker->imageUrl(300, 300),
+			'minibio' => $this->faker->sentence,
+			'instagram' => $this->faker->sentence,
 			'linkedin' => $this->faker->sentence,
 			'facebook' => $this->faker->sentence,
 			'twitter' => $this->faker->sentence,
-			'instagram' => $this->faker->sentence,
+			'email' => $this->faker->email,
+			'cellphone' => $this->faker->cellphone,
              
         ];
         $this->actingAs($user)->withSession(['banned' => false])->put("/api/v1/teams/$model->id", $data)->assertOk();
