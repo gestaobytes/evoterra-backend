@@ -7,20 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Gallery extends Model
+class Galery extends Model
 {
     
     use SoftDeletes, HasFactory, Notifiable;
 
-    protected $table = 'galleries';
+    protected $table = 'galeries';
     protected $primaryKey = 'id';
     protected $fillable = [
         'uuid',
         
+		 'name',
 		 'type',
-		 'title',
-		 'slug',
-		 'exibetitle',
          
     ];
     

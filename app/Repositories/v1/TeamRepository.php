@@ -19,12 +19,12 @@ class TeamRepository implements TeamInterface
 	{
 		$dateFilter = $this->commons->dateFilters();
 		$registersPerPage = $this->commons->registersPerPage();
-		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,name,linkedin,facebook,twitter,instagram');
+		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,name,image,minibio,instagram,linkedin,facebook,twitter,email,cellphone');
 		$sortByField = $this->commons->sortByField();
 		$data = $this->model->select($fieldsToSelect)->whereBetween('created_at', [$dateFilter['dts'], $dateFilter['dtf']]);
 
 		if(isset($_GET['q'])){
-			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('name,bio') : '';
+			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('name') : '';
 			$data->whereRaw("($fieldsToSearch)");
 		}
 

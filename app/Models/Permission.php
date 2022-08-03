@@ -16,16 +16,15 @@ class Permission extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'uuid',
-        
+
 		 'name',
 		 'description',
-         
     ];
-    
+
 
 	public function roles()
 	{
-		return $this->ManyToMany(Role::class);
+		return $this->belongsToMany(Role::class);
 	}
-     
+
 }

@@ -19,12 +19,12 @@ class ItemsgalleryRepository implements ItemsgalleryInterface
 	{
 		$dateFilter = $this->commons->dateFilters();
 		$registersPerPage = $this->commons->registersPerPage();
-		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,name,legend,credit,address');
+		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,src,legend,credit');
 		$sortByField = $this->commons->sortByField();
 		$data = $this->model->select($fieldsToSelect)->whereBetween('created_at', [$dateFilter['dts'], $dateFilter['dtf']]);
 
 		if(isset($_GET['q'])){
-			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('name,legend,credit') : '';
+			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('legend') : '';
 			$data->whereRaw("($fieldsToSearch)");
 		}
 

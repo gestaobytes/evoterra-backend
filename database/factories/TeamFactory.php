@@ -17,11 +17,14 @@ class TeamFactory extends Factory
         return [
             
 			'name' => $this->faker->name,
-			'bio' => '',
+			'image' => $this->faker->imageUrl(300, 300),
+			'minibio' => $this->faker->sentence,
+			'instagram' => $this->faker->sentence,
 			'linkedin' => $this->faker->sentence,
 			'facebook' => $this->faker->sentence,
 			'twitter' => $this->faker->sentence,
-			'instagram' => $this->faker->sentence,
+			'email' => $this->faker->email,
+			'cellphone' => $this->faker->cellphone,
              
         ];
 

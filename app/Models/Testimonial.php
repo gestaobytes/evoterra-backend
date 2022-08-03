@@ -7,27 +7,22 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Gallery extends Model
+class Testimonial extends Model
 {
     
     use SoftDeletes, HasFactory, Notifiable;
 
-    protected $table = 'galleries';
+    protected $table = 'testimonials';
     protected $primaryKey = 'id';
     protected $fillable = [
         'uuid',
         
-		 'type',
-		 'title',
-		 'slug',
-		 'exibetitle',
+		 'client',
+		 'company',
+		 'image',
+		 'text',
          
     ];
     
-
-	public function itemsgalleries()
-	{
-		return $this->hasMany(Itemsgallery::class);
-	}
      
 }

@@ -18,17 +18,16 @@ class Itemsgallery extends Model
         'uuid',
         
 		 'gallery_id',
-		 'name',
+		 'src',
 		 'legend',
 		 'credit',
-		 'address',
          
     ];
     
 
-	public function gallery()
+	public function galery()
 	{
-		return $this->belongsTo(Gallery::class);
+		return $this->belongsTo(Galery::class);
 	}
      
 }

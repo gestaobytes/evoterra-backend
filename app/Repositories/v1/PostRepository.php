@@ -21,7 +21,7 @@ class PostRepository implements PostInterface
 		$registersPerPage = $this->commons->registersPerPage();
 		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,intertitle,title,subtitle,text,tags,image,legend,credit');
 		$sortByField = $this->commons->sortByField();
-		$data = $this->model->select($fieldsToSelect);
+		$data = $this->model->select($fieldsToSelect)->whereBetween('created_at', [$dateFilter['dts'], $dateFilter['dtf']]);
 
 		if(isset($_GET['q'])){
 			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('intertitle,title,text,tags') : '';

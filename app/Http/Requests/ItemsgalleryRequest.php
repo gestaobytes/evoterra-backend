@@ -16,10 +16,9 @@ class ItemsgalleryRequest extends FormRequest
         return [
             
 			'gallery_id' => 'required|numeric',
-			'name' => 'max:70',
-			'legend' => 'max:120',
-			'credit' => 'max:40',
-			'address' => 'required|max:120',
+			'src' => 'required|max:255',
+			'legend' => 'max:100',
+			'credit' => 'max:60',
              
         ];
     }
@@ -30,11 +29,10 @@ class ItemsgalleryRequest extends FormRequest
             
 			'gallery_id.required' => 'GALERIAS nao foi selecionado.',
 			'gallery_id.numeric' => 'GALERIAS deve ser numerico.',
-			'name.max' => 'NOME deve ter no maximo :max caracteres.',
+			'src.required' => 'ENDEREçO FOTO/VIDEO nao foi selecionado.',
+			'src.max' => 'ENDEREçO FOTO/VIDEO deve ter no maximo :max caracteres.',
 			'legend.max' => 'LEGENDA deve ter no maximo :max caracteres.',
-			'credit.max' => 'CRéDITO deve ter no maximo :max caracteres.',
-			'address.required' => 'ARQUIVO/ENDEREçO nao foi selecionado.',
-			'address.max' => 'ARQUIVO/ENDEREçO deve ter no maximo :max caracteres.',
+			'credit.max' => 'CREDITO deve ter no maximo :max caracteres.',
              
         ];
     }

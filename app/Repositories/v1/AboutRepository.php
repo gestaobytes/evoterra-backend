@@ -2,15 +2,15 @@
 
 namespace App\Repositories\v1;
 
-use App\Models\Editorial;
-use App\Interfaces\v1\EditorialInterface;
+use App\Models\About;
+use App\Interfaces\v1\AboutInterface;
 use App\Http\Controllers\v1\_ControlCommon;
 
-class EditorialRepository implements EditorialInterface
+class AboutRepository implements AboutInterface
 {
     private $model, $commons;
 
-    public function __construct(Editorial $model, _ControlCommon $commons) {
+    public function __construct(About $model, _ControlCommon $commons) {
         $this->model = $model;
         $this->commons = $commons;
     }
@@ -19,12 +19,12 @@ class EditorialRepository implements EditorialInterface
 	{
 		$dateFilter = $this->commons->dateFilters();
 		$registersPerPage = $this->commons->registersPerPage();
-		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,name,order');
+		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,title,image');
 		$sortByField = $this->commons->sortByField();
 		$data = $this->model->select($fieldsToSelect)->whereBetween('created_at', [$dateFilter['dts'], $dateFilter['dtf']]);
 
 		if(isset($_GET['q'])){
-			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('name,order') : '';
+			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('title,text') : '';
 			$data->whereRaw("($fieldsToSearch)");
 		}
 

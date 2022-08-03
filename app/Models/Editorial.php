@@ -5,12 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Notifications\Notifiable;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Editorial extends Model
 {
-    public $timestamps = false;
-    use  HasFactory, Notifiable;
+    
+    use SoftDeletes, HasFactory, Notifiable;
 
     protected $table = 'editorials';
     protected $primaryKey = 'id';

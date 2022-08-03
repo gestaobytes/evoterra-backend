@@ -21,7 +21,7 @@ class PortifolioRepository implements PortifolioInterface
 		$registersPerPage = $this->commons->registersPerPage();
 		$fieldsToSelect = $this->commons->fieldsToSelect('id,uuid,clientname,titlework,resume');
 		$sortByField = $this->commons->sortByField();
-		$data = $this->model->select($fieldsToSelect);
+		$data = $this->model->select($fieldsToSelect)->whereBetween('created_at', [$dateFilter['dts'], $dateFilter['dtf']]);
 
 		if(isset($_GET['q'])){
 			$fieldsToSearch = isset($_GET['q']) ? $this->commons->keywordsToSearch('clientname,titlework,work,link,city') : '';

@@ -18,11 +18,14 @@ class Team extends Model
         'uuid',
         
 		 'name',
-		 'bio',
+		 'image',
+		 'minibio',
+		 'instagram',
 		 'linkedin',
 		 'facebook',
 		 'twitter',
-		 'instagram',
+		 'email',
+		 'cellphone',
          
     ];
     

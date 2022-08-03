@@ -4,22 +4,20 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-use App\Models\Itemsgallery;
+use App\Models\Galery;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 
-class ItemsgalleryFactory extends Factory
+class GaleryFactory extends Factory
 {
-    protected $model = Itemsgallery::class;
+    protected $model = Galery::class;
 
     public function definition()
     {
         return [
             
-			'gallery_id' => 1,
-			'src' => $this->faker->imageUrl(300, 300),
-			'legend' => $this->faker->sentence,
-			'credit' => $this->faker->sentence,
+			'name' => $this->faker->name,
+			'type' => ,
              
         ];
 

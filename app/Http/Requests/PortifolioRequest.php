@@ -14,22 +14,22 @@ class PortifolioRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
 			'clientname' => 'required|max:100',
 			'titlework' => 'required|max:100',
-			'work' => 'required|',
+			'work' => 'required',
 			'link' => 'max:200',
 			'resume' => 'required|max:200',
 			'city' => 'max:100',
 			'uf' => 'max:2',
-             
+
         ];
     }
 
     public function messages()
     {
         return [
-            
+
 			'clientname.required' => 'CLIENTE nao foi selecionado.',
 			'clientname.max' => 'CLIENTE deve ter no maximo :max caracteres.',
 			'titlework.required' => 'TRABALHO REALIZADO nao foi selecionado.',
@@ -40,7 +40,7 @@ class PortifolioRequest extends FormRequest
 			'resume.max' => 'RESUMO DO TRABALHO deve ter no maximo :max caracteres.',
 			'city.max' => 'CIDADE deve ter no maximo :max caracteres.',
 			'uf.max' => 'UF deve ter no maximo :max caracteres.',
-             
+
         ];
     }
 }

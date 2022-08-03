@@ -16,21 +16,21 @@ class Role extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'uuid',
-        
+
 		 'name',
 		 'description',
-         
+
     ];
-    
 
-	public function permissions()
-	{
-		return $this->ManyToMany(Permission::class);
-	}
+    public function users()
+    {
+        return $this->belongsToMany(User::class)->withPivot('id');
+    }
 
-	public function users()
-	{
-		return $this->ManyToMany(User::class);
-	}
-     
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class)->withPivot('id');
+    }
+
+
 }

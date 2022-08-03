@@ -14,19 +14,19 @@ class GalleryRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
 			'type' => 'required|max:1',
 			'title' => 'required|max:150',
 			'slug' => 'required|max:200',
-			'exibetitle' => 'required|',
-             
+			'exibetitle' => 'required',
+
         ];
     }
 
     public function messages()
     {
         return [
-            
+
 			'type.required' => 'TIPO nao foi selecionado.',
 			'type.max' => 'TIPO deve ter no maximo :max caracteres.',
 			'title.required' => 'TITULO DA GALERIA nao foi selecionado.',
@@ -34,7 +34,7 @@ class GalleryRequest extends FormRequest
 			'slug.required' => 'SLUG nao foi selecionado.',
 			'slug.max' => 'SLUG deve ter no maximo :max caracteres.',
 			'exibetitle.required' => 'EXIBIR TITULO? nao foi selecionado.',
-             
+
         ];
     }
 }

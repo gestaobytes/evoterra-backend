@@ -14,25 +14,25 @@ class PostRequest extends FormRequest
     public function rules()
     {
         return [
-            
+
 			'editorial_id' => 'required|numeric',
 			'intertitle' => 'required|max:40',
 			'title' => 'required|max:120',
 			'subtitle' => 'max:180',
 			'slug' => 'required|max:140',
-			'text' => 'required|',
+			'text' => 'required',
 			'tags' => 'required|max:80',
 			'image' => 'max:120',
 			'legend' => 'max:90',
 			'credit' => 'max:50',
-             
+
         ];
     }
 
     public function messages()
     {
         return [
-            
+
 			'editorial_id.required' => 'EDITORIAIS nao foi selecionado.',
 			'editorial_id.numeric' => 'EDITORIAIS deve ser numerico.',
 			'intertitle.required' => 'INTERTíTULO nao foi selecionado.',
@@ -48,7 +48,7 @@ class PostRequest extends FormRequest
 			'image.max' => 'IMAGEM deve ter no maximo :max caracteres.',
 			'legend.max' => 'LEGENDA deve ter no maximo :max caracteres.',
 			'credit.max' => 'CRéDITO deve ter no maximo :max caracteres.',
-             
+
         ];
     }
 }
